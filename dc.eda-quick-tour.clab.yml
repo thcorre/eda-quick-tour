@@ -2,12 +2,12 @@
 # Licensed under the BSD 3-Clause License.
 # SPDX-License-Identifier: BSD-3-Clause
 
-name: dc-${GROUP_ID}-eda
+name: eda-quick-tour
 
 mgmt:
-  network: dc-${GROUP_ID}-eda
-  ipv4-subnet: 172.80.1${GROUP_ID}0.0/24
-  ipv6-subnet: 3fff:172:80:1${GROUP_ID}0::/64
+  network: eda-quick-tour
+  ipv4-subnet: 172.80.10.0/24
+  ipv6-subnet: 3fff:172:80:10::/64
 
 topology:
   defaults:
@@ -25,36 +25,36 @@ topology:
     spine1:
       type: ixr-d3l
       group: spine
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.21
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::21
+      mgmt-ipv4: 172.80.10.21
+      mgmt-ipv6: 3fff:172:80:10::21
 
     spine2:
       type: ixr-d3l
       group: spine
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.22
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::22
+      mgmt-ipv4: 172.80.10.22
+      mgmt-ipv6: 3fff:172:80:10::22
 
     ### LEAFS ###
     leaf1:
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.11
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::11
+      mgmt-ipv4: 172.80.10.11
+      mgmt-ipv6: 3fff:172:80:10::11
       group: leaf
 
     leaf2:
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.12
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::12
+      mgmt-ipv4: 172.80.10.12
+      mgmt-ipv6: 3fff:172:80:10::12
       group: leaf
 
     leaf3:
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.13
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::13
+      mgmt-ipv4: 172.80.10.13
+      mgmt-ipv6: 3fff:172:80:10::13
       group: leaf
 
     ### CLIENTS ###
     client1:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.31
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::31
+      mgmt-ipv4: 172.80.10.31
+      mgmt-ipv6: 3fff:172:80:10::31
       exec:
         - ip address add 172.17.0.1/24 dev eth1
         - ip -6 address add 2002::172:17:0:1/96 dev eth1
@@ -62,8 +62,8 @@ topology:
       group: server
     client2:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.32
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::32
+      mgmt-ipv4: 172.80.10.32
+      mgmt-ipv6: 3fff:172:80:10::32
       exec:
         - ip address add 172.17.0.2/24 dev eth1
         - ip -6 address add 2002::172:17:0:2/96 dev eth1
@@ -71,8 +71,8 @@ topology:
       group: server
     client3:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.33
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::33
+      mgmt-ipv4: 172.80.10.33
+      mgmt-ipv6: 3fff:172:80:10::33
       binds:
         - configs/client3:/config    
       exec:
@@ -85,8 +85,8 @@ topology:
     ### TELEMETRY STACK ###
     gnmic:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.41
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::41
+      mgmt-ipv4: 172.80.10.41
+      mgmt-ipv6: 3fff:172:80:10::41
       image: ghcr.io/openconfig/gnmic:0.41.0
       binds:
         - configs/gnmic/gnmic-config.yml:/gnmic-config.yml:ro
@@ -95,20 +95,20 @@ topology:
 
     prometheus:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.42
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::42
+      mgmt-ipv4: 172.80.10.42
+      mgmt-ipv6: 3fff:172:80:10::42
       image: prom/prometheus:v2.53.4
       binds:
         - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       cmd: --config.file=/etc/prometheus/prometheus.yml
       ports:
-        - 919${GROUP_ID}:9090
+        - 9090:9090
       group: "10"
 
     grafana:
       kind: linux
-      mgmt-ipv4: 172.80.1${GROUP_ID}0.43
-      mgmt-ipv6: 3fff:172:80:1${GROUP_ID}0::43
+      mgmt-ipv4: 172.80.10.43
+      mgmt-ipv6: 3fff:172:80:10::43
       image: grafana/grafana:9.5.2
       binds:
         - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
@@ -119,7 +119,7 @@ topology:
           - 8.8.8.8
           - 8.8.4.4
       ports:
-        - 301${GROUP_ID}:3000
+        - 3000:3000
       env:
         GF_INSTALL_PLUGINS: https://algenty.github.io/flowcharting-repository/archives/agenty-flowcharting-panel-1.0.0d.220606199-SNAPSHOT.zip;agenty-flowcharting-panel
       group: "10"

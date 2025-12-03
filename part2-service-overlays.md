@@ -813,7 +813,7 @@ show interface ethernet-1/1.4097
 
 ## 🏁 Lab Completion Summary
 
-**This concludes Exercises 2 and 3 of the SGNOG12 EDA Lab!**
+**This concludes Exercises 2 and 3 of the EDA Guide!**
 
 You have successfully:  
 ✅ Created individual Bridge Domain and Bridge Interface components  

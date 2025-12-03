@@ -626,7 +626,7 @@ EQL queries use the following structure:
 
 ## 🎯 What's Next?
 
-Congratulations! You've completed all three parts of the SGNOG12 EDA Lab.
+Congratulations! You've completed all three parts of the EDA Guide.
 
 ### Continue Your Learning
 
@@ -647,7 +647,7 @@ Congratulations! You've completed all three parts of the SGNOG12 EDA Lab.
 
 ## 🏁 Lab Completion
 
-**This concludes Exercises 5 and 6 of the SGNOG12 EDA Lab!**
+**This concludes Exercises 5 and 6 of the EDA Guide!**
 
 You have successfully:  
 ✅ Detected and managed configuration deviations  
@@ -666,4 +666,4 @@ You have successfully:
 
 ---
 
-**Congratulations on completing the SGNOG12 EDA Lab!** You're now ready to leverage EDA for production network automation.
+**Congratulations on completing the EDA quick tour!** You're now ready to leverage EDA for production network automation.
