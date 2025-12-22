@@ -1,6 +1,6 @@
 # 🌐 EDA Lab
 
-> **Hands-on Nokia EDA Guide**
+> **Hands-on Nokia EDA Tour**
 
 Welcome to the EDA Lab!   
 This comprehensive tour provides **three guides** to help you master Nokia's Event-Driven Automation (EDA) platform through practical, hands-on exercises.
