@@ -3,7 +3,7 @@
 > **Hands-on Nokia EDA Guide**
 
 Welcome to the EDA Lab!   
-This quick tour provides **three comprehensive guides** to help you master Nokia's Event-Driven Automation (EDA) platform through practical, hands-on exercises.
+This comprehensive tour provides **three guides** to help you master Nokia's Event-Driven Automation (EDA) platform through practical, hands-on exercises.
 
 ---
 
