@@ -140,30 +140,38 @@ In this exercise, we'll create a Layer 2 EVPN overlay service for client1, clien
 
 ### Lab Topology
 
+```mermaid
+graph TD
+    spine1[spine1]
+    spine2[spine2]
+    leaf1[leaf1]
+    leaf2[leaf2]
+    leaf3[leaf3]
+    c1([client1<br/>172.17.0.1/24])
+    c2([client2<br/>172.17.0.2/24])
+    c3([client3<br/>172.17.0.3/24])
+
+    spine1 ---|uplink-1| leaf1
+    spine1 ---|uplink-1| leaf2
+    spine1 ---|uplink-1| leaf3
+    spine2 ---|uplink-2| leaf1
+    spine2 ---|uplink-2| leaf2
+    spine2 ---|uplink-2| leaf3
+
+    leaf1 ---|e1/1 untagged| c1
+    leaf2 ---|e1/1 untagged| c2
+    leaf3 ---|e1/1 untagged| c3
+
+    classDef spine fill:#4a90d9,color:#fff,stroke:#2c5282
+    classDef leaf fill:#48bb78,color:#fff,stroke:#276749
+    classDef client fill:#ed8936,color:#fff,stroke:#c05621
+
+    class spine1,spine2 spine
+    class leaf1,leaf2,leaf3 leaf
+    class c1,c2,c3 client
 ```
-              ┌─────────┐  ┌─────────┐
-              │ spine1  │  │ spine2  |  
-              └────┬────┘  └────┬────┘
-                   │            │
-            ┌──────┴───────┐────┴───────┐
-            │              │            │  
-       ┌────┴────┐    ┌────┴────┐  ┌───-┴────┐ 
-       │  leaf1  │    │  leaf2  │  │  leaf3  │ 
-       └────┬────┘    └────┬────┘  └────┬────┘ 
-            │              │            │
-     ethernet-1/1.0 ethernet-1/1.0 ethernet-1/1.0
-        untagged       untagged      untagged
-            │              │            │
-        ┌───┴───┐      ┌───┴───┐    ┌───┴───┐
-        │client1│      │client2│    │client3│
-        │ .0.1  │      │  0.2  │    │  0.3  │
-        └───────┘      └───────┘    └───────┘
-          
-    Bridge Domain: l2vnet
-    VNI: 200 (from vni-pool)
-    EVI: 100 (from evi-pool)
-    Tunnel Index: 500 (from tunnel-index-pool)
-```
+
+> **Bridge Domain:** l2vnet | **VNI:** 200 (from vni-pool) | **EVI:** 100 (from evi-pool) | **Tunnel Index:** 500 (from tunnel-index-pool)
 
 ---
 
