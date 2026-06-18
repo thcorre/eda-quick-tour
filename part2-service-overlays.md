@@ -102,7 +102,8 @@ VNI: 200 | Tunnel Index: 500"]
         ─────────────────
 MAC-VRF: l2vnet
 VXLAN Iface: vxlan0.200
-VNI: 200 | Tunnel Index: 500"]
+VNI: 200
+Tunnel Index: 500"]
 
         leaf3["leaf3
         ─────────────────
