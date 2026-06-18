@@ -88,11 +88,11 @@ Before starting Part 2, ensure you have:
 
 ```mermaid
 graph TD
-    spine1[🔀 spine1]
-    spine2[🔀 spine2]
-    leaf1[🍃 leaf1]
-    leaf2[🍃 leaf2]
-    leaf3[🍃 leaf3]
+    spine1[spine1]
+    spine2[spine2]
+    leaf1[leaf1]
+    leaf2[leaf2]
+    leaf3[leaf3]
     c1([client1<br/>172.17.0.1/24])
     c2([client2<br/>172.17.0.2/24])
     c3([client3<br/>172.17.0.3/24])
