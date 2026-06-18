@@ -88,23 +88,23 @@ Before starting Part 2, ensure you have:
 
 ```mermaid
 graph TD
-    spine1[🔀 spine1]
-    spine2[🔀 spine2]
+    spine1[spine1]
+    spine2[spine2]
 
     subgraph BD["Bridge Domain: l2vnet  ·  EVI: 100  ·  VNI: 200  ·  (EVPN-VXLAN overlay spans all leafs)"]
-        leaf1["🍃 leaf1
+        leaf1["leaf1
         ─────────────────
         MAC-VRF: l2vnet
         VXLAN Iface: vxlan0.200
         VNI: 200 | Tunnel Index: 500"]
 
-        leaf2["🍃 leaf2
+        leaf2["leaf2
         ─────────────────
         MAC-VRF: l2vnet
         VXLAN Iface: vxlan0.200
         VNI: 200 | Tunnel Index: 500"]
 
-        leaf3["🍃 leaf3
+        leaf3["leaf3
         ─────────────────
         MAC-VRF: l2vnet
         VXLAN Iface: vxlan0.200
