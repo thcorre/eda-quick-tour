@@ -158,9 +158,9 @@ graph TD
     spine2 ---|uplink-2| leaf2
     spine2 ---|uplink-2| leaf3
 
-    leaf1 ---|e1/1 untagged| c1
-    leaf2 ---|e1/1 untagged| c2
-    leaf3 ---|e1/1 untagged| c3
+    leaf1 ---|ethernet-1/1.0<br/>untagged| c1
+    leaf2 ---|ethernet-1/1.0<br/>untagged| c2
+    leaf3 ---|ethernet-1/1.0<br/>untagged| c3
 
     classDef spine fill:#4a90d9,color:#fff,stroke:#2c5282
     classDef leaf fill:#48bb78,color:#fff,stroke:#276749
