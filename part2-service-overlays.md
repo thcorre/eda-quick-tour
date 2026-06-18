@@ -325,9 +325,9 @@ We need to create two Bridge Interfaces to connect client1, client2 and client3 
 
 1. **Open Transaction Basket**
    - Navigate to your active transaction
-   - You should see 3 resources ready to commit:
+   - You should see 4 resources ready to commit:
      - 1 Bridge Domain (`l2vnet`)
-     - 2 Bridge Interfaces (`client1`, `client2`, `client3`)
+     - 3 Bridge Interfaces (`client1`, `client2`, `client3`)
 
 2. **Add Commit Message**
    ```
