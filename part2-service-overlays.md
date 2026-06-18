@@ -96,7 +96,8 @@ graph TD
         ─────────────────
 MAC-VRF: l2vnet
 VXLAN Iface: vxlan0.200
-VNI: 200 | Tunnel Index: 500"]
+VNI: 200
+Tunnel Index: 500"]
 
         leaf2["leaf2
         ─────────────────
@@ -109,7 +110,8 @@ Tunnel Index: 500"]
         ─────────────────
 MAC-VRF: l2vnet
 VXLAN Iface: vxlan0.200
-VNI: 200 | Tunnel Index: 500"]
+VNI: 200
+Tunnel Index: 500"]
     end
 
     c1(["👤 client1
