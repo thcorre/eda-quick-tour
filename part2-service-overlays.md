@@ -88,58 +88,53 @@ Before starting Part 2, ensure you have:
 
 ```mermaid
 graph TD
-    subgraph SPINE_LAYER["Spine Layer (IP Underlay / BGP Route Reflectors)"]
-        spine1[spine1]
-        spine2[spine2]
+    spine1[🔀 spine1]
+    spine2[🔀 spine2]
+
+    subgraph BD["Bridge Domain: l2vnet  ·  EVI: 100  ·  VNI: 200  ·  (EVPN-VXLAN overlay spans all leafs)"]
+        leaf1["🍃 leaf1
+        ─────────────────
+        MAC-VRF: l2vnet
+        VXLAN Iface: vxlan0.200
+        VNI: 200 | Tunnel Index: 500"]
+
+        leaf2["🍃 leaf2
+        ─────────────────
+        MAC-VRF: l2vnet
+        VXLAN Iface: vxlan0.200
+        VNI: 200 | Tunnel Index: 500"]
+
+        leaf3["🍃 leaf3
+        ─────────────────
+        MAC-VRF: l2vnet
+        VXLAN Iface: vxlan0.200
+        VNI: 200 | Tunnel Index: 500"]
     end
 
-    subgraph BD["Bridge Domain: l2vnet (spans all leafs via EVPN-VXLAN)"]
-        subgraph L1["leaf1 — MAC-VRF: l2vnet"]
-            bi1["Bridge Interface\neth-1/1.0 (untagged)"]
-            vx1["VXLAN Interface\nvxlan0.200\nVNI: 200 | Tunnel Index: 500"]
-        end
-        subgraph L2["leaf2 — MAC-VRF: l2vnet"]
-            bi2["Bridge Interface\neth-1/1.0 (untagged)"]
-            vx2["VXLAN Interface\nvxlan0.200\nVNI: 200 | Tunnel Index: 500"]
-        end
-        subgraph L3["leaf3 — MAC-VRF: l2vnet"]
-            bi3["Bridge Interface\neth-1/1.0 (untagged)"]
-            vx3["VXLAN Interface\nvxlan0.200\nVNI: 200 | Tunnel Index: 500"]
-        end
-    end
+    c1(["👤 client1
+    172.17.0.1/24"])
+    c2(["👤 client2
+    172.17.0.2/24"])
+    c3(["👤 client3
+    172.17.0.3/24"])
 
-    c1([client1\n172.17.0.1/24])
-    c2([client2\n172.17.0.2/24])
-    c3([client3\n172.17.0.3/24])
+    spine1 ---|uplink-1| leaf1
+    spine1 ---|uplink-1| leaf2
+    spine1 ---|uplink-1| leaf3
+    spine2 ---|uplink-2| leaf1
+    spine2 ---|uplink-2| leaf2
+    spine2 ---|uplink-2| leaf3
 
-    spine1 ---|uplink-1| L1
-    spine1 ---|uplink-1| L2
-    spine1 ---|uplink-1| L3
-    spine2 ---|uplink-2| L1
-    spine2 ---|uplink-2| L2
-    spine2 ---|uplink-2| L3
-
-    bi1 --- vx1
-    bi2 --- vx2
-    bi3 --- vx3
-
-    vx1 ---|"VXLAN tunnel\nEVI: 100 | VNI: 200"| vx2
-    vx1 ---|"VXLAN tunnel\nEVI: 100 | VNI: 200"| vx3
-    vx2 ---|"VXLAN tunnel\nEVI: 100 | VNI: 200"| vx3
-
-    c1 ---|e1/1 untagged| bi1
-    c2 ---|e1/1 untagged| bi2
-    c3 ---|e1/1 untagged| bi3
+    leaf1 ---|"Bridge Interface: eth-1/1.0 (untagged)"| c1
+    leaf2 ---|"Bridge Interface: eth-1/1.0 (untagged)"| c2
+    leaf3 ---|"Bridge Interface: eth-1/1.0 (untagged)"| c3
 
     classDef spine fill:#4a90d9,color:#fff,stroke:#2c5282
-    classDef macvrf fill:#48bb78,color:#fff,stroke:#276749
-    classDef vxlan fill:#667eea,color:#fff,stroke:#434190
-    classDef bridge fill:#f6ad55,color:#333,stroke:#c05621
+    classDef leaf fill:#48bb78,color:#fff,stroke:#276749
     classDef client fill:#ed8936,color:#fff,stroke:#c05621
 
     class spine1,spine2 spine
-    class bi1,bi2,bi3 bridge
-    class vx1,vx2,vx3 vxlan
+    class leaf1,leaf2,leaf3 leaf
     class c1,c2,c3 client
 ```
 
