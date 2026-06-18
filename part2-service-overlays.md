@@ -94,7 +94,7 @@ graph TD
     subgraph BD["Bridge Domain: l2vnet  ·  EVI: 100  ·  VNI: 200  ·  (EVPN-VXLAN overlay spans all leafs)"]
         leaf1["leaf1
         ─────────────────
-        MAC-VRF: l2vnet
+MAC-VRF: l2vnet
         VXLAN Iface: vxlan0.200
         VNI: 200 | Tunnel Index: 500"]
 
