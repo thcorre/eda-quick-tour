@@ -86,25 +86,35 @@ Before starting Part 2, ensure you have:
 
 ### Service Architecture
 
-```
-┌─────────────────────────────────────────┐
-│              Spine Layer                │
-│       ┌─────────┐    ┌─────────┐        │
-│       │ spine1  │────│ spine2  │        │
-│       └────┬────┘    └────┬────┘        │
-└────────────┼──────────────┼─────────────┘
-             │              │
-       ┌─────┴──────┬───────┴──────┐
-       │            │              │    
-  ┌────┴────┐  ┌────┴─────┐  ┌─────┴────┐ 
-  │  leaf1  │  │  leaf2   │  │  leaf3   │ 
-  └────┬────┘  └────┬─────┘  └─────┬────┘ 
-       │            │              │
-    ┌──┴──┐      ┌──┴──┐        ┌──┴──┐
-    │ c1  │      │ c2  │        │ c3  │       ← Bridge Domain "l2vnet"
-    │     │      │     │        │     │       ← VNI 200 (from vni-pool), EVI 100 (from evi-pool)
-    │null │      │null │        │null │       ← VXLAN tunnel between leafs
-    └─────┘      └─────┘        └─────┘
+```mermaid
+graph TD
+    spine1[🔀 spine1]
+    spine2[🔀 spine2]
+    leaf1[🍃 leaf1]
+    leaf2[🍃 leaf2]
+    leaf3[🍃 leaf3]
+    c1([client1<br/>172.17.0.1/24])
+    c2([client2<br/>172.17.0.2/24])
+    c3([client3<br/>172.17.0.3/24])
+
+    leaf1 -->|uplink-1| spine1
+    leaf1 -->|uplink-2| spine2
+    leaf2 -->|uplink-1| spine1
+    leaf2 -->|uplink-2| spine2
+    leaf3 -->|uplink-1| spine1
+    leaf3 -->|uplink-2| spine2
+
+    c1 -->|e1/1 untagged| leaf1
+    c2 -->|e1/1 untagged| leaf2
+    c3 -->|e1/1 untagged| leaf3
+
+    classDef spine fill:#4a90d9,color:#fff,stroke:#2c5282
+    classDef leaf fill:#48bb78,color:#fff,stroke:#276749
+    classDef client fill:#ed8936,color:#fff,stroke:#c05621
+
+    class spine1,spine2 spine
+    class leaf1,leaf2,leaf3 leaf
+    class c1,c2,c3 client
 ```
 
 ### Two Methods for L2 EVPN Service Creation
