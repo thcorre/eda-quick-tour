@@ -95,20 +95,20 @@ graph TD
         leaf1["leaf1
         ─────────────────
 MAC-VRF: l2vnet
-        VXLAN Iface: vxlan0.200
-        VNI: 200 | Tunnel Index: 500"]
+VXLAN Iface: vxlan0.200
+VNI: 200 | Tunnel Index: 500"]
 
         leaf2["leaf2
         ─────────────────
-        MAC-VRF: l2vnet
-        VXLAN Iface: vxlan0.200
-        VNI: 200 | Tunnel Index: 500"]
+MAC-VRF: l2vnet
+VXLAN Iface: vxlan0.200
+VNI: 200 | Tunnel Index: 500"]
 
         leaf3["leaf3
         ─────────────────
-        MAC-VRF: l2vnet
-        VXLAN Iface: vxlan0.200
-        VNI: 200 | Tunnel Index: 500"]
+MAC-VRF: l2vnet
+VXLAN Iface: vxlan0.200
+VNI: 200 | Tunnel Index: 500"]
     end
 
     c1(["👤 client1
