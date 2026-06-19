@@ -187,6 +187,7 @@ From the **Summary view**, explore the fabric components:
 ### Step 6: Verify on Devices (SR Linux)
 
 SSH to a spine (e.g., `spine1`) and verify the configuration.
+(Password is 'NokiaSrl1!')
 
 #### 🔌 Interfaces
 
